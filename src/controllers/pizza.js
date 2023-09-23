@@ -31,6 +31,7 @@ export const getPizza = async (req, res) => {
 // Add a new Pizza
 export const addPizza = async (req, res) => {
   const {
+    // eslint-disable-next-line camelcase
     name, description, price, toppings, category, is_available
   } = req.body;
   const columns = 'name, description, price, toppings, category, is_available';
@@ -38,7 +39,6 @@ export const addPizza = async (req, res) => {
   const values = `'${name}', '${description}', '${price}', '${JSON.stringify(toppings)}', '${category}', '${is_available}'`;
   try {
     const data = await pizzaModel.insertWithReturn(columns, values);
-    console.log(data, "hi");
     res.status(200).json({ messages: 'Created Successfully', data: data.rows });
   } catch (err) {
     res.status(400).json({ messages: err.stack });
