@@ -37,7 +37,7 @@ const values = `'${data.name}', '${data.description}', '${
 const clause = ` WHERE id = ${1} `;
 
 const columns = 'name, description, price, toppings, category, is_available';
-describe('Express App', () => {
+describe('Online Pizza App', () => {
   it('should return all pizza on GET /pizzas', (done) => {
     dbStub.select.withArgs('*').resolves({ rows: [data] });
     chai
@@ -110,10 +110,8 @@ describe('Express App', () => {
     ];
     dbStub.update.callsFake((values, clause) => {
       const pizzaId = clause?.split('=')[1].replace(' ', '');
-      console.log(clause, pizzaId);
       if (!pizzaId) return;
       const findIndex = db.findIndex((item) => +item.id === +pizzaId);
-      console.log(findIndex, "find");
       if (findIndex !== -1) db[findIndex] = { ...db[findIndex], ...values };
       return;
     });
