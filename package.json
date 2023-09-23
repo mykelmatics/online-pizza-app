@@ -1,0 +1,47 @@
+{
+  "name": "buynow-backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "prestart": "babel ./src --out-dir build",
+    "start": "node ./build/bin/www",
+    "startdev": "nodemon --exec babel-node ./src/bin/www",
+    "lint": "./node_modules/.bin/eslint ./src",
+    "pretty": "prettier --write src/**/*.{js,json} ",
+    "postpretty": "npm run lint --fix",
+    "runQuery": "babel-node ./src/utils/runQuery",
+    "test": "mocha --require @babel/register",
+    "test:watch": "mocha --watch --require @babel/register"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/node": "^7.16.8",
+    "@babel/runtime": "^7.17.2",
+    "axios": "^0.26.1",
+    "chai-http": "^4.4.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.0",
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "joi": "^17.6.0",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.3",
+    "prettier": "^2.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.20",
+    "@babel/plugin-transform-runtime": "^7.22.15",
+    "@babel/preset-env": "^7.22.20",
+    "@babel/preset-stage-2": "^7.8.3",
+    "@babel/register": "^7.22.15",
+    "chai": "^4.3.8",
+    "esm": "^3.2.25",
+    "mocha": "^10.2.0",
+    "sinon": "^16.0.0"
+  }
+}
